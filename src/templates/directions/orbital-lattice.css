@@ -1,0 +1,377 @@
+/* Direction 17 — Orbital Lattice. */
+
+[data-tpl='orbital-3d'] {
+  --bg: #050a18;
+  --surface: #0c1426;
+  --fg: #e8f1ff;
+  --muted: #8ea3c4;
+  --line: #1b2740;
+  --accent: #38bdf8;
+  --accent-2: #a78bfa;
+
+  background: radial-gradient(120% 80% at 70% 10%, #0d1b36 0%, var(--bg) 60%);
+  color: var(--fg);
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  min-height: 100dvh;
+  overflow: clip;
+  padding-block-end: 6rem;
+}
+
+[data-theme='light'] [data-tpl='orbital-3d'] {
+  --bg: #eef3fb;
+  --surface: #ffffff;
+  --fg: #0a1730;
+  --muted: #4d6180;
+  --line: #d2dcec;
+  --accent: #0284c7;
+  --accent-2: #7c3aed;
+
+  background: radial-gradient(120% 80% at 70% 10%, #dfe9f9 0%, var(--bg) 60%);
+}
+
+[data-tpl='orbital-3d'] h1,
+[data-tpl='orbital-3d'] h2,
+[data-tpl='orbital-3d'] h3,
+[data-tpl='orbital-3d'] .ol__mark {
+  font-family: 'Exo', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+[data-tpl='orbital-3d'] .ol__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem clamp(1rem, 4vw, 2.5rem);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='orbital-3d'] .ol__mark {
+  font-size: 0.9375rem;
+  letter-spacing: 0.2em;
+}
+
+[data-tpl='orbital-3d'] .ol__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='orbital-3d'] .ol__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.625rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 200ms var(--ease-out);
+}
+
+[data-tpl='orbital-3d'] .ol__nav a:hover {
+  color: var(--accent);
+}
+
+[data-tpl='orbital-3d'] .ol__hero {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2.5rem);
+  max-width: 1320px;
+  margin-inline: auto;
+  min-height: 78dvh;
+}
+
+[data-tpl='orbital-3d'] .ol__canvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 60dvh;
+  order: -1;
+}
+
+[data-tpl='orbital-3d'] .ol__canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Static fallback composition — a complete visual, not a placeholder. */
+[data-tpl='orbital-3d'] .ol__static {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+[data-tpl='orbital-3d'] .ol__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0.4;
+}
+
+[data-tpl='orbital-3d'] .ol__ring--1 {
+  inset: 12%;
+  transform: rotate(18deg) scaleY(0.42);
+}
+
+[data-tpl='orbital-3d'] .ol__ring--2 {
+  inset: 20%;
+  border-color: var(--accent-2);
+  transform: rotate(-32deg) scaleY(0.5);
+}
+
+[data-tpl='orbital-3d'] .ol__ring--3 {
+  inset: 6%;
+  transform: rotate(74deg) scaleY(0.3);
+  opacity: 0.25;
+}
+
+[data-tpl='orbital-3d'] .ol__core {
+  width: 22%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--accent), var(--accent-2));
+  box-shadow: 0 0 60px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+[data-tpl='orbital-3d'] .ol__hero-body {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 1rem;
+}
+
+[data-tpl='orbital-3d'] .ol__eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+[data-tpl='orbital-3d'] .ol__hero-body h1 {
+  font-family: 'Exo', sans-serif;
+  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+[data-tpl='orbital-3d'] .ol__lede {
+  color: var(--muted);
+  max-width: 46ch;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+[data-tpl='orbital-3d'] .ol__cta {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding-inline: 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  color: #04101f;
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+}
+
+[data-tpl='orbital-3d'] .ol__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+[data-tpl='orbital-3d'] .ol__note {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='orbital-3d'] .ol__section {
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
+}
+
+[data-tpl='orbital-3d'] .ol__section h2 {
+  font-size: clamp(1.375rem, 3.4vw, 2.25rem);
+  letter-spacing: -0.02em;
+  margin-block-end: 1.5rem;
+  padding-block-end: 0.75rem;
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='orbital-3d'] .ol__nodes,
+[data-tpl='orbital-3d'] .ol__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='orbital-3d'] .ol__grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 205px), 1fr));
+}
+
+[data-tpl='orbital-3d'] .ol__nodes li,
+[data-tpl='orbital-3d'] .ol__grid li {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.375rem;
+  align-content: start;
+  transition: border-color 240ms var(--ease-out), transform 240ms var(--ease-out);
+}
+
+[data-tpl='orbital-3d'] .ol__nodes li:hover,
+[data-tpl='orbital-3d'] .ol__grid li:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+[data-tpl='orbital-3d'] .ol__node-dot {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+[data-tpl='orbital-3d'] .ol__num {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: var(--accent-2);
+}
+
+[data-tpl='orbital-3d'] .ol__nodes h3,
+[data-tpl='orbital-3d'] .ol__grid h3 {
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+[data-tpl='orbital-3d'] .ol__nodes p,
+[data-tpl='orbital-3d'] .ol__grid p,
+[data-tpl='orbital-3d'] .ol__about p {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.75;
+}
+
+[data-tpl='orbital-3d'] .ol__about {
+  display: grid;
+  gap: 1rem;
+  max-width: 70ch;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+[data-tpl='orbital-3d'] .ol__contact {
+  display: grid;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+[data-tpl='orbital-3d'] .ol__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+[data-tpl='orbital-3d'] .ol__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='orbital-3d'] .ol__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-size: 0.875rem;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+[data-tpl='orbital-3d'] .ol__contact-links a:hover {
+  text-decoration: underline;
+}
+
+[data-tpl='orbital-3d'] .ol__social {
+  display: grid;
+  gap: 0.375rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+[data-tpl='orbital-3d'] .ol__social span {
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='orbital-3d'] .ol__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+  border-block-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 900px) {
+  [data-tpl='orbital-3d'] .ol__hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  [data-tpl='orbital-3d'] .ol__canvas {
+    order: 1;
+    max-height: none;
+  }
+
+  [data-tpl='orbital-3d'] .ol__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

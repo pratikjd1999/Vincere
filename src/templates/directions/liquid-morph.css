@@ -1,0 +1,345 @@
+/* Direction 16 — Liquid Form. */
+
+[data-tpl='liquid-morph'] {
+  --bg: #fdf7fb;
+  --surface: rgb(255 255 255 / 0.7);
+  --fg: #1c1033;
+  --muted: #5f5480;
+  --line: rgb(120 60 180 / 0.16);
+  --accent: #a21caf;
+  --g1: #f472b6;
+  --g2: #a78bfa;
+  --g3: #22d3ee;
+
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Manrope', system-ui, sans-serif;
+  min-height: 100dvh;
+  overflow: clip;
+  padding-block-end: 6rem;
+}
+
+[data-theme='dark'] [data-tpl='liquid-morph'] {
+  --bg: #0d0620;
+  --surface: rgb(38 22 68 / 0.6);
+  --fg: #f4eeff;
+  --muted: #b3a5d4;
+  --line: rgb(180 140 255 / 0.2);
+  --accent: #e879f9;
+  --g1: #db2777;
+  --g2: #7c3aed;
+  --g3: #0891b2;
+}
+
+[data-tpl='liquid-morph'] h1,
+[data-tpl='liquid-morph'] h2,
+[data-tpl='liquid-morph'] h3,
+[data-tpl='liquid-morph'] .lm__mark {
+  font-family: 'Syne', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+[data-tpl='liquid-morph'] .lm__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem clamp(1rem, 4vw, 2.5rem);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+[data-tpl='liquid-morph'] .lm__mark {
+  font-size: 0.9375rem;
+  letter-spacing: 0.16em;
+}
+
+[data-tpl='liquid-morph'] .lm__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='liquid-morph'] .lm__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.875rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 260ms var(--ease-out), color 260ms var(--ease-out);
+}
+
+[data-tpl='liquid-morph'] .lm__nav a:hover {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+[data-tpl='liquid-morph'] .lm__hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(2.5rem, 8vw, 5rem) clamp(1rem, 5vw, 3rem);
+  min-height: 80dvh;
+}
+
+[data-tpl='liquid-morph'] .lm__blob-wrap {
+  position: absolute;
+  inset: -10% -20% -10% 30%;
+  z-index: 0;
+  opacity: 0.85;
+  filter: blur(4px);
+}
+
+[data-tpl='liquid-morph'] .lm__blob-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+[data-tpl='liquid-morph'] .lm__hero-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.125rem;
+  max-width: 40rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(26px) saturate(160%);
+}
+
+[data-tpl='liquid-morph'] .lm__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+[data-tpl='liquid-morph'] .lm__hero-body h1 {
+  font-size: clamp(2.25rem, 7vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+[data-tpl='liquid-morph'] .lm__lede {
+  color: var(--muted);
+  max-width: 48ch;
+  line-height: 1.75;
+}
+
+[data-tpl='liquid-morph'] .lm__cta {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding-inline: 1.75rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--g1), var(--g2), var(--g3));
+  background-size: 200% 200%;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-position 600ms var(--ease-out), transform 260ms var(--ease-out);
+}
+
+[data-tpl='liquid-morph'] .lm__cta:hover {
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+}
+
+[data-tpl='liquid-morph'] .lm__section {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 5vw, 3rem);
+}
+
+[data-tpl='liquid-morph'] .lm__section h2 {
+  font-size: clamp(1.625rem, 4vw, 2.75rem);
+  letter-spacing: -0.035em;
+  margin-block-end: 1.75rem;
+}
+
+[data-tpl='liquid-morph'] .lm__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='liquid-morph'] .lm__cards--tight {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+[data-tpl='liquid-morph'] .lm__cards li {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 1.5rem;
+  border-radius: 26px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: transform 420ms var(--ease-out), border-radius 420ms var(--ease-out);
+}
+
+[data-tpl='liquid-morph'] .lm__cards li::before {
+  content: '';
+  position: absolute;
+  inset: auto -30% -60% auto;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  background: linear-gradient(120deg, var(--g1), var(--g3));
+  opacity: 0.16;
+  transition: transform 520ms var(--ease-out);
+}
+
+[data-tpl='liquid-morph'] .lm__cards li:hover {
+  transform: translateY(-4px);
+  border-radius: 40px 26px 40px 26px;
+}
+
+[data-tpl='liquid-morph'] .lm__cards li:hover::before {
+  transform: translate(-20%, -20%) scale(1.2);
+}
+
+[data-tpl='liquid-morph'] .lm__num {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+[data-tpl='liquid-morph'] .lm__cards h3 {
+  font-size: 1.1875rem;
+  letter-spacing: -0.02em;
+}
+
+[data-tpl='liquid-morph'] .lm__cards p,
+[data-tpl='liquid-morph'] .lm__about p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+[data-tpl='liquid-morph'] .lm__ribbon {
+  background: linear-gradient(110deg, var(--g1), var(--g2), var(--g3));
+  color: #fff;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 5vw, 3rem);
+  border-radius: 60px 8px 60px 8px;
+  margin-inline: clamp(0.5rem, 3vw, 2rem);
+  text-align: center;
+}
+
+[data-tpl='liquid-morph'] .lm__ribbon p {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 5.5vw, 3.75rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+[data-tpl='liquid-morph'] .lm__about {
+  display: grid;
+  gap: 1rem;
+  max-width: 66ch;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: 30px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(20px);
+}
+
+[data-tpl='liquid-morph'] .lm__contact {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 34px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(20px);
+}
+
+[data-tpl='liquid-morph'] .lm__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+[data-tpl='liquid-morph'] .lm__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='liquid-morph'] .lm__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+[data-tpl='liquid-morph'] .lm__contact-links a:hover {
+  text-decoration: underline;
+}
+
+[data-tpl='liquid-morph'] .lm__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+[data-tpl='liquid-morph'] .lm__social span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.125rem 0.5rem;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='liquid-morph'] .lm__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: 2rem clamp(1rem, 5vw, 3rem);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 860px) {
+  [data-tpl='liquid-morph'] .lm__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

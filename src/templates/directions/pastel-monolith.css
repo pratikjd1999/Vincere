@@ -1,0 +1,471 @@
+/*
+ * Direction 23 — Pastel Monolith.
+ *
+ * Palette rule: pastels carry surfaces and accents only. Text always sits on a
+ * near-neutral ground with a deep muted ink, so nothing drops below WCAG AA
+ * despite the low-chroma look. No saturated or high-contrast hues anywhere.
+ */
+
+[data-tpl='pastel-monolith'] {
+  --bg: #f4f1ec;
+  --surface: #fbf9f6;
+  --surface-2: #eeeae2;
+  --ink: #34333a;
+  --muted: #6d6b74;
+  --line: #ddd7cd;
+
+  --blush: #e8c8c4;
+  --sage: #c3d3c0;
+  --mist: #c8d5e0;
+  --lilac: #d5cde0;
+  --sand: #e7dcc9;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Manrope', system-ui, sans-serif;
+  min-height: 100dvh;
+  /* No overflow clipping here: it would clip the fixed sculpture layer. */
+}
+
+/* Everything except the sculpture rides above it. */
+[data-tpl='pastel-monolith'] .pm__header,
+[data-tpl='pastel-monolith'] main,
+[data-tpl='pastel-monolith'] .pm__footer {
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme='dark'] [data-tpl='pastel-monolith'] {
+  --bg: #1a191d;
+  --surface: #212026;
+  --surface-2: #26252c;
+  --ink: #eae7e1;
+  --muted: #a5a1ab;
+  --line: #322f38;
+
+  /* Pastels are darkened rather than inverted, keeping the same softness. */
+  --blush: #6f5a58;
+  --sage: #5b6a58;
+  --mist: #566372;
+  --lilac: #625a72;
+  --sand: #6d6252;
+}
+
+[data-tpl='pastel-monolith'] h1,
+[data-tpl='pastel-monolith'] h2,
+[data-tpl='pastel-monolith'] h3,
+[data-tpl='pastel-monolith'] .pm__mark {
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-weight: 600;
+}
+
+/* ---- Chrome ---- */
+
+[data-tpl='pastel-monolith'] .pm__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem clamp(1rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+[data-tpl='pastel-monolith'] .pm__mark {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+[data-tpl='pastel-monolith'] .pm__loc {
+  display: none;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='pastel-monolith'] .pm__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 2vw, 1.75rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='pastel-monolith'] .pm__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 320ms var(--ease-out);
+}
+
+[data-tpl='pastel-monolith'] .pm__nav a:hover {
+  color: var(--ink);
+}
+
+/* ---- Sculpture stage ---- */
+
+[data-tpl='pastel-monolith'] .pm__stage {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  min-height: 86dvh;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 3rem);
+  text-align: center;
+}
+
+/*
+ * The sculpture is fixed behind the entire document, not parked in the hero.
+ * Every section scrolls over it while it turns.
+ */
+[data-tpl='pastel-monolith'] .pm__sculpture {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-tpl='pastel-monolith'] .pm__sculpture canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* CSS fallback — same letterform, turned by the scroll-driven custom property. */
+[data-tpl='pastel-monolith'] .pm__sculpture-static {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--blush);
+  perspective: 1100px;
+}
+
+[data-tpl='pastel-monolith'] .pm__sculpture-static svg {
+  width: min(46vmin, 30rem);
+  filter: drop-shadow(0 18px 34px rgb(52 51 58 / 0.12));
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--pm-progress, 0) * 540deg))
+    rotateX(calc(var(--pm-progress, 0) * 20deg - 7deg));
+}
+
+/*
+ * No blend mode here: the fixed sculpture sits in its own layer, and blending
+ * against it would make the measured text contrast unpredictable.
+ */
+[data-tpl='pastel-monolith'] .pm__hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.1em;
+}
+
+[data-tpl='pastel-monolith'] .pm__spaced {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: clamp(1.5rem, 7.5vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1.06;
+  /* The reference's signature: letters tracked far apart. */
+  letter-spacing: clamp(0.12em, 1.4vw, 0.3em);
+  text-indent: clamp(0.12em, 1.4vw, 0.3em);
+}
+
+[data-tpl='pastel-monolith'] .pm__spaced span {
+  display: inline-block;
+}
+
+[data-tpl='pastel-monolith'] .pm__stage-foot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  max-width: 44rem;
+}
+
+[data-tpl='pastel-monolith'] .pm__lede {
+  color: var(--muted);
+  font-size: clamp(0.9375rem, 1.9vw, 1.0625rem);
+  line-height: 1.85;
+  max-width: 48ch;
+}
+
+[data-tpl='pastel-monolith'] .pm__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 54px;
+  padding-inline: 2.25rem;
+  border-radius: 999px;
+  background: var(--blush);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 380ms var(--ease-out), transform 380ms var(--ease-out);
+}
+
+[data-tpl='pastel-monolith'] .pm__cta:hover {
+  background: var(--sage);
+  transform: translateY(-2px);
+}
+
+/* ---- Sections ---- */
+
+[data-tpl='pastel-monolith'] .pm__section {
+  max-width: 84rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+}
+
+[data-tpl='pastel-monolith'] .pm__section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-end: 1rem;
+  margin-block-end: 2rem;
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='pastel-monolith'] .pm__section-head h2 {
+  font-size: clamp(0.875rem, 1.8vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+[data-tpl='pastel-monolith'] .pm__section-head p {
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='pastel-monolith'] .pm__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='pastel-monolith'] .pm__cards--tight {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr));
+}
+
+[data-tpl='pastel-monolith'] .pm__cards li {
+  position: relative;
+  display: grid;
+  gap: 0.625rem;
+  align-content: start;
+  padding: 1.75rem 1.5rem 1.625rem;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: transform 420ms var(--ease-out), box-shadow 420ms var(--ease-out);
+}
+
+/* A pastel wash rises through the card on hover — no colour jump. */
+[data-tpl='pastel-monolith'] .pm__cards li::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100%;
+  background: linear-gradient(to top, var(--sand), transparent 62%);
+  opacity: 0;
+  transition: opacity 460ms var(--ease-out);
+}
+
+[data-tpl='pastel-monolith'] .pm__cards li:nth-child(3n + 2)::before {
+  background: linear-gradient(to top, var(--mist), transparent 62%);
+}
+
+[data-tpl='pastel-monolith'] .pm__cards li:nth-child(3n + 3)::before {
+  background: linear-gradient(to top, var(--sage), transparent 62%);
+}
+
+[data-tpl='pastel-monolith'] .pm__cards li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgb(52 51 58 / 0.09);
+}
+
+[data-tpl='pastel-monolith'] .pm__cards li:hover::before {
+  opacity: 0.5;
+}
+
+[data-tpl='pastel-monolith'] .pm__cards li > * {
+  position: relative;
+}
+
+[data-tpl='pastel-monolith'] .pm__card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='pastel-monolith'] .pm__cards h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+[data-tpl='pastel-monolith'] .pm__cards p,
+[data-tpl='pastel-monolith'] .pm__prose p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+[data-tpl='pastel-monolith'] .pm__quiet {
+  display: grid;
+  place-items: center;
+  padding: clamp(3.5rem, 12vw, 9rem) clamp(1rem, 4vw, 3rem);
+  text-align: center;
+}
+
+[data-tpl='pastel-monolith'] .pm__quiet p {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(1.125rem, 3.6vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  max-width: 22ch;
+  line-height: 1.4;
+}
+
+[data-tpl='pastel-monolith'] .pm__prose {
+  display: grid;
+  gap: 1.125rem;
+  max-width: 66ch;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+[data-tpl='pastel-monolith'] .pm__contact {
+  display: grid;
+  gap: 1.75rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+[data-tpl='pastel-monolith'] .pm__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  line-height: 1.85;
+  font-size: 0.9375rem;
+}
+
+[data-tpl='pastel-monolith'] .pm__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='pastel-monolith'] .pm__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-block-end: 2px solid var(--blush);
+  word-break: break-word;
+  transition: border-color 320ms var(--ease-out);
+}
+
+[data-tpl='pastel-monolith'] .pm__contact-links a:hover {
+  border-color: var(--sage);
+}
+
+[data-tpl='pastel-monolith'] .pm__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+[data-tpl='pastel-monolith'] .pm__social span {
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 0.2rem 0.625rem;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='pastel-monolith'] .pm__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding: 2rem clamp(1rem, 4vw, 3rem) 7rem;
+  border-block-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+  [data-tpl='pastel-monolith'] .pm__header {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  [data-tpl='pastel-monolith'] .pm__loc {
+    display: block;
+    justify-self: end;
+  }
+
+  [data-tpl='pastel-monolith'] .pm__nav ul {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 900px) {
+  [data-tpl='pastel-monolith'] .pm__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tpl='pastel-monolith'] .pm__sculpture-static svg {
+    animation: none;
+  }
+}

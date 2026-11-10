@@ -1,0 +1,353 @@
+/* Direction 06 — Civic Brutalist. No gradients, no radii, no eased hovers. */
+
+[data-tpl='neubrutal-grid'] {
+  --bg: #f4f1e8;
+  --ink: #000000;
+  --paper: #ffffff;
+  --yellow: #ffd400;
+  --blue: #3b82f6;
+  --red: #ff5252;
+  --shadow: 6px 6px 0 var(--ink);
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Public Sans', system-ui, sans-serif;
+  min-height: 100dvh;
+  padding-block-end: 6rem;
+}
+
+[data-theme='dark'] [data-tpl='neubrutal-grid'] {
+  --bg: #16161a;
+  --ink: #f7f7f2;
+  --paper: #232329;
+  --yellow: #e0b800;
+  --blue: #4d8bff;
+  --red: #ff6b6b;
+  --shadow: 6px 6px 0 var(--ink);
+}
+
+[data-tpl='neubrutal-grid'] h1,
+[data-tpl='neubrutal-grid'] h2,
+[data-tpl='neubrutal-grid'] h3,
+[data-tpl='neubrutal-grid'] .nb__mark {
+  font-family: 'Lexend Mega', system-ui, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+[data-tpl='neubrutal-grid'] .nb__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem clamp(1rem, 4vw, 2rem);
+  background: var(--yellow);
+  border-block-end: 4px solid var(--ink);
+  color: #000;
+}
+
+[data-tpl='neubrutal-grid'] .nb__mark {
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+}
+
+[data-tpl='neubrutal-grid'] .nb__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='neubrutal-grid'] .nb__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.75rem;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none;
+}
+
+[data-tpl='neubrutal-grid'] .nb__nav a:hover {
+  background: #000;
+  color: var(--yellow);
+}
+
+[data-tpl='neubrutal-grid'] .nb__main {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+[data-tpl='neubrutal-grid'] .nb__hero {
+  display: grid;
+  gap: 1.5rem;
+  padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+[data-tpl='neubrutal-grid'] .nb__hero-main {
+  border: 4px solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  gap: 1rem;
+}
+
+[data-tpl='neubrutal-grid'] .nb__tag {
+  display: inline-block;
+  justify-self: start;
+  background: var(--red);
+  color: #000;
+  border: 3px solid var(--ink);
+  padding: 0.25rem 0.75rem;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+[data-tpl='neubrutal-grid'] .nb__hero-main h1 {
+  font-size: clamp(2rem, 7.5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+}
+
+[data-tpl='neubrutal-grid'] .nb__lede {
+  max-width: 52ch;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+[data-tpl='neubrutal-grid'] .nb__cta {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 56px;
+  padding-inline: 1.75rem;
+  background: var(--blue);
+  color: #fff;
+  border: 4px solid var(--ink);
+  box-shadow: var(--shadow);
+  font-family: 'Lexend Mega', sans-serif;
+  font-weight: 900;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none;
+}
+
+[data-tpl='neubrutal-grid'] .nb__cta:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+[data-tpl='neubrutal-grid'] .nb__hero-side {
+  border: 4px solid var(--ink);
+  background: var(--yellow);
+  color: #000;
+  box-shadow: var(--shadow);
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  place-items: center;
+}
+
+[data-tpl='neubrutal-grid'] .nb__hero-side p {
+  font-family: 'Lexend Mega', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.25rem, 3.4vw, 2.25rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+[data-tpl='neubrutal-grid'] .nb__section {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+[data-tpl='neubrutal-grid'] .nb__section h2 {
+  display: inline-block;
+  font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.375rem 1rem;
+  margin-block-end: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+[data-tpl='neubrutal-grid'] .nb__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='neubrutal-grid'] .nb__grid li {
+  position: relative;
+  border: 4px solid var(--ink);
+  box-shadow: var(--shadow);
+  padding: 1.375rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  transition: none;
+}
+
+[data-tpl='neubrutal-grid'] .nb__grid li:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink);
+}
+
+[data-tpl='neubrutal-grid'] .nb--yellow {
+  background: var(--yellow);
+  color: #000;
+}
+
+[data-tpl='neubrutal-grid'] .nb--blue {
+  background: var(--blue);
+  color: #fff;
+}
+
+[data-tpl='neubrutal-grid'] .nb--red {
+  background: var(--red);
+  color: #000;
+}
+
+[data-tpl='neubrutal-grid'] .nb--paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+[data-tpl='neubrutal-grid'] .nb__num {
+  font-family: 'Lexend Mega', sans-serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+[data-tpl='neubrutal-grid'] .nb__grid h3 {
+  font-size: 1.0625rem;
+  line-height: 1.2;
+}
+
+[data-tpl='neubrutal-grid'] .nb__grid p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+[data-tpl='neubrutal-grid'] .nb__section--invert {
+  background: var(--ink);
+  color: var(--bg);
+  border: 4px solid var(--ink);
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  margin-block: 1rem;
+}
+
+[data-tpl='neubrutal-grid'] .nb__section--invert h2 {
+  background: var(--yellow);
+  color: #000;
+}
+
+[data-tpl='neubrutal-grid'] .nb__about {
+  display: grid;
+  gap: 1rem;
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+[data-tpl='neubrutal-grid'] .nb__contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1.25rem;
+}
+
+[data-tpl='neubrutal-grid'] .nb__contact-block {
+  border: 4px solid var(--ink);
+  box-shadow: var(--shadow);
+  padding: 1.375rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+[data-tpl='neubrutal-grid'] .nb__contact-block h3 {
+  font-size: 0.9375rem;
+}
+
+[data-tpl='neubrutal-grid'] .nb__contact-block address {
+  font-style: normal;
+  display: grid;
+  line-height: 1.7;
+  font-size: 0.9375rem;
+}
+
+[data-tpl='neubrutal-grid'] .nb__contact-block a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-word;
+  color: inherit;
+}
+
+[data-tpl='neubrutal-grid'] .nb__social {
+  display: grid;
+  gap: 0.375rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+[data-tpl='neubrutal-grid'] .nb__social span {
+  border: 2px solid currentColor;
+  padding: 0 0.375rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='neubrutal-grid'] .nb__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  margin-block-start: 2rem;
+  border-block-start: 4px solid var(--ink);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 880px) {
+  [data-tpl='neubrutal-grid'] .nb__hero {
+    grid-template-columns: 1.6fr 1fr;
+  }
+
+  [data-tpl='neubrutal-grid'] .nb__grid--5 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  }
+}

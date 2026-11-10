@@ -1,0 +1,297 @@
+/* Direction 14 — Terminal Brief. Zero radius everywhere, monospace only. */
+
+[data-tpl='terminal-net'] {
+  --bg: #050505;
+  --fg: #33ff00;
+  --dim: #1f9c08;
+  --muted: #157005;
+  --line: #123d06;
+
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.9375rem;
+  min-height: 100dvh;
+  padding-block-end: 6rem;
+}
+
+/* Light theme: paper terminal rather than abandoning the idea. */
+[data-theme='light'] [data-tpl='terminal-net'] {
+  --bg: #f4f4ee;
+  --fg: #0f3d05;
+  --dim: #276b12;
+  --muted: #4a7a3a;
+  --line: #c8d4be;
+}
+
+[data-tpl='terminal-net'] * {
+  border-radius: 0 !important;
+}
+
+[data-tpl='terminal-net'] .tn__scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.06) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+[data-theme='light'] [data-tpl='terminal-net'] .tn__scanlines {
+  opacity: 0.4;
+}
+
+[data-tpl='terminal-net'] .tn__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.625rem clamp(0.75rem, 3vw, 1.5rem);
+  background: var(--bg);
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='terminal-net'] .tn__mark {
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  font-size: 0.8125rem;
+}
+
+[data-tpl='terminal-net'] .tn__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='terminal-net'] .tn__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.75rem;
+  color: var(--dim);
+  text-decoration: none;
+  transition: none;
+}
+
+[data-tpl='terminal-net'] .tn__nav a:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+[data-tpl='terminal-net'] .tn__main {
+  max-width: 74rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 2.5rem) clamp(0.75rem, 3vw, 1.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+[data-tpl='terminal-net'] .tn__block {
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='terminal-net'] .tn__line {
+  font-size: 0.875rem;
+  word-break: break-word;
+  margin-block-end: 1rem;
+}
+
+[data-tpl='terminal-net'] .tn__line--end {
+  border: 0;
+  padding-block: 1.5rem;
+  margin: 0;
+}
+
+[data-tpl='terminal-net'] .tn__prompt {
+  color: var(--muted);
+}
+
+[data-tpl='terminal-net'] .tn__cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  background: var(--fg);
+  vertical-align: text-bottom;
+  margin-inline-start: 2px;
+  animation: tn-blink 1s steps(1) infinite;
+}
+
+@keyframes tn-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+[data-tpl='terminal-net'] .tn__ascii {
+  color: var(--dim);
+  font-size: 0.625rem;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  overflow-x: auto;
+}
+
+[data-tpl='terminal-net'] .tn__title {
+  font-size: clamp(1.5rem, 6vw, 3.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin-block-end: 1rem;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--fg) 45%, transparent);
+}
+
+[data-theme='light'] [data-tpl='terminal-net'] .tn__title {
+  text-shadow: none;
+}
+
+[data-tpl='terminal-net'] .tn__out {
+  color: var(--dim);
+  max-width: 78ch;
+  line-height: 1.8;
+  margin-block-end: 0.75rem;
+  font-size: 0.875rem;
+}
+
+[data-tpl='terminal-net'] .tn__out--dim {
+  color: var(--muted);
+}
+
+[data-tpl='terminal-net'] .tn__out a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  word-break: break-all;
+}
+
+[data-tpl='terminal-net'] .tn__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin-block-start: 0.5rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: none;
+}
+
+[data-tpl='terminal-net'] .tn__cta:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+[data-tpl='terminal-net'] .tn__ls,
+[data-tpl='terminal-net'] .tn__status {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='terminal-net'] .tn__ls li,
+[data-tpl='terminal-net'] .tn__status li {
+  display: grid;
+  gap: 0.125rem 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  transition: none;
+}
+
+[data-tpl='terminal-net'] .tn__ls li:hover,
+[data-tpl='terminal-net'] .tn__status li:hover {
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+}
+
+[data-tpl='terminal-net'] .tn__idx,
+[data-tpl='terminal-net'] .tn__ok {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+[data-tpl='terminal-net'] .tn__name {
+  color: var(--fg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+[data-tpl='terminal-net'] .tn__desc {
+  color: var(--dim);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+[data-tpl='terminal-net'] .tn__addr {
+  font-style: normal;
+  display: grid;
+  color: var(--dim);
+  line-height: 1.9;
+  font-size: 0.875rem;
+  margin-block-end: 0.75rem;
+}
+
+[data-tpl='terminal-net'] .tn__social {
+  display: grid;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  color: var(--dim);
+  font-size: 0.8125rem;
+}
+
+[data-tpl='terminal-net'] .tn__social span {
+  color: var(--muted);
+}
+
+[data-tpl='terminal-net'] .tn__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 74rem;
+  margin-inline: auto;
+  padding: 1rem clamp(0.75rem, 3vw, 1.5rem);
+  border-block-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 780px) {
+  [data-tpl='terminal-net'] .tn__ls li {
+    grid-template-columns: 3rem minmax(0, 16rem) 1fr;
+    align-items: baseline;
+  }
+
+  [data-tpl='terminal-net'] .tn__status li {
+    grid-template-columns: 9rem minmax(0, 16rem) 1fr;
+    align-items: baseline;
+  }
+}

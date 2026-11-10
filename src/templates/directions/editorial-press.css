@@ -1,0 +1,340 @@
+/* Direction 08 — Editorial Press. */
+
+[data-tpl='editorial-press'] {
+  --paper: #faf7f2;
+  --ink: #1c1917;
+  --muted: #6b6259;
+  --line: #d9d2c7;
+  --accent: #b45309;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  min-height: 100dvh;
+  padding-block-end: 6rem;
+}
+
+[data-theme='dark'] [data-tpl='editorial-press'] {
+  --paper: #14110e;
+  --ink: #f3ede4;
+  --muted: #a89c8c;
+  --line: #33291f;
+  --accent: #e0912f;
+}
+
+[data-tpl='editorial-press'] h1,
+[data-tpl='editorial-press'] h2,
+[data-tpl='editorial-press'] h3,
+[data-tpl='editorial-press'] .ed__title-mark {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+[data-tpl='editorial-press'] .ed__masthead {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2.5rem) 1rem;
+  border-block-end: 3px double var(--line);
+  text-align: center;
+}
+
+[data-tpl='editorial-press'] .ed__dateline {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='editorial-press'] .ed__title-mark {
+  font-size: clamp(1.75rem, 7vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  line-height: 1;
+}
+
+[data-tpl='editorial-press'] .ed__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--line);
+  width: 100%;
+}
+
+[data-tpl='editorial-press'] .ed__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 200ms var(--ease-out);
+}
+
+[data-tpl='editorial-press'] .ed__nav a:hover {
+  color: var(--accent);
+}
+
+[data-tpl='editorial-press'] .ed__main {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+[data-tpl='editorial-press'] .ed__feature {
+  padding-block: clamp(2rem, 6vw, 3.5rem);
+}
+
+[data-tpl='editorial-press'] .ed__kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+[data-tpl='editorial-press'] .ed__headline {
+  font-size: clamp(2.5rem, 9vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin-block: 0.75rem 1rem;
+}
+
+[data-tpl='editorial-press'] .ed__standfirst {
+  font-size: clamp(1.125rem, 2.8vw, 1.75rem);
+  font-style: italic;
+  color: var(--muted);
+  max-width: 40ch;
+}
+
+[data-tpl='editorial-press'] .ed__rule {
+  height: 1px;
+  border: 0;
+  background: var(--line);
+  margin-block: 1.75rem;
+}
+
+[data-tpl='editorial-press'] .ed__columns {
+  column-gap: 2.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+[data-tpl='editorial-press'] .ed__columns p {
+  margin-block-end: 1rem;
+  break-inside: avoid-column;
+}
+
+[data-tpl='editorial-press'] .ed__dropcap::first-letter {
+  float: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.6em;
+  line-height: 0.82;
+  font-weight: 900;
+  padding-inline-end: 0.08em;
+  padding-block-start: 0.04em;
+  color: var(--accent);
+}
+
+[data-tpl='editorial-press'] .ed__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin-block-start: 1rem;
+  padding-inline: 1.5rem;
+  border: 1px solid var(--ink);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 220ms var(--ease-out), color 220ms var(--ease-out);
+}
+
+[data-tpl='editorial-press'] .ed__cta:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+[data-tpl='editorial-press'] .ed__section {
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-tpl='editorial-press'] .ed__section-title {
+  font-size: clamp(1.125rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-block-end: 1.5rem;
+  padding-block-end: 0.5rem;
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='editorial-press'] .ed__index {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 2rem 2.5rem;
+}
+
+[data-tpl='editorial-press'] .ed__index article {
+  border-block-start: 2px solid var(--ink);
+  padding-block-start: 0.75rem;
+}
+
+[data-tpl='editorial-press'] .ed__folio {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+[data-tpl='editorial-press'] .ed__index h3,
+[data-tpl='editorial-press'] .ed__list h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-block: 0.25rem 0.5rem;
+}
+
+[data-tpl='editorial-press'] .ed__body {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+[data-tpl='editorial-press'] .ed__list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+[data-tpl='editorial-press'] .ed__list article {
+  padding-block-end: 1.25rem;
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='editorial-press'] .ed__figure {
+  margin: 0;
+}
+
+[data-tpl='editorial-press'] .ed__plate {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+[data-tpl='editorial-press'] .ed__plate > div {
+  background: var(--paper);
+  padding: 1.25rem;
+}
+
+[data-tpl='editorial-press'] .ed__plate h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-block-end: 0.375rem;
+}
+
+[data-tpl='editorial-press'] .ed__plate p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+[data-tpl='editorial-press'] .ed__figure figcaption {
+  margin-block-start: 0.75rem;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+[data-tpl='editorial-press'] .ed__contact {
+  display: grid;
+  gap: 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+[data-tpl='editorial-press'] .ed__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+}
+
+[data-tpl='editorial-press'] .ed__contact a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  text-decoration: none;
+  border-block-end: 1px solid currentColor;
+  word-break: break-word;
+}
+
+[data-tpl='editorial-press'] .ed__social {
+  display: grid;
+  gap: 0.375rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+[data-tpl='editorial-press'] .ed__social span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='editorial-press'] .ed__colophon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+  border-block-start: 3px double var(--line);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (min-width: 760px) {
+  [data-tpl='editorial-press'] .ed__columns {
+    column-count: 2;
+  }
+
+  [data-tpl='editorial-press'] .ed__section--two {
+    display: grid;
+    grid-template-columns: minmax(0, 14rem) 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  [data-tpl='editorial-press'] .ed__section--two .ed__section-title {
+    margin-block-end: 0;
+  }
+
+  [data-tpl='editorial-press'] .ed__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  [data-tpl='editorial-press'] .ed__columns {
+    column-count: 3;
+  }
+}

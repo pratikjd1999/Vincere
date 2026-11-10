@@ -1,0 +1,385 @@
+/* Direction 11 — Scroll Narrative. Only one section pins, per GSAP guidance. */
+
+[data-tpl='parallax-story'] {
+  --bg: #eef2f8;
+  --surface: #ffffff;
+  --fg: #0c1222;
+  --muted: #55637d;
+  --line: #d5dded;
+  --accent: #0891b2;
+
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Roboto', system-ui, sans-serif;
+  min-height: 100dvh;
+  overflow: clip;
+}
+
+[data-theme='dark'] [data-tpl='parallax-story'] {
+  --bg: #060a14;
+  --surface: #101725;
+  --fg: #e7ecf5;
+  --muted: #94a3ba;
+  --line: #1e2739;
+  --accent: #22d3ee;
+}
+
+[data-tpl='parallax-story'] h1,
+[data-tpl='parallax-story'] h2,
+[data-tpl='parallax-story'] h3 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-weight: 600;
+}
+
+[data-tpl='parallax-story'] .ps__header {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1rem, 4vw, 2.5rem);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='parallax-story'] .ps__mark {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  font-size: 0.875rem;
+}
+
+[data-tpl='parallax-story'] .ps__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='parallax-story'] .ps__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 200ms var(--ease-out);
+}
+
+[data-tpl='parallax-story'] .ps__nav a:hover {
+  color: var(--accent);
+}
+
+[data-tpl='parallax-story'] .ps__opening {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 1.25rem;
+  min-height: 100dvh;
+  padding: 6rem clamp(1rem, 6vw, 5rem) 4rem;
+  overflow: hidden;
+}
+
+[data-tpl='parallax-story'] .ps__bg {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  z-index: 0;
+  will-change: transform;
+}
+
+[data-tpl='parallax-story'] .ps__bg--1 {
+  width: 40vmax;
+  height: 40vmax;
+  background: var(--accent);
+  top: -10%;
+  right: -8%;
+}
+
+[data-tpl='parallax-story'] .ps__bg--2 {
+  width: 30vmax;
+  height: 30vmax;
+  background: #6366f1;
+  bottom: -14%;
+  left: -6%;
+  opacity: 0.35;
+}
+
+[data-tpl='parallax-story'] .ps__bg--3 {
+  width: 34vmax;
+  height: 34vmax;
+  background: var(--accent);
+  top: 20%;
+  right: -12%;
+  opacity: 0.22;
+}
+
+[data-tpl='parallax-story'] .ps__opening > *:not(.ps__bg),
+[data-tpl='parallax-story'] .ps__chapter > *:not(.ps__bg) {
+  position: relative;
+  z-index: 1;
+}
+
+[data-tpl='parallax-story'] .ps__chapter-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+[data-tpl='parallax-story'] .ps__opening h1 {
+  font-size: clamp(2.5rem, 9vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+[data-tpl='parallax-story'] .ps__lede {
+  color: var(--muted);
+  max-width: 52ch;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  line-height: 1.7;
+}
+
+[data-tpl='parallax-story'] .ps__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding-inline: 1.875rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #04141a;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+}
+
+[data-tpl='parallax-story'] .ps__cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+[data-tpl='parallax-story'] .ps__scroll-hint {
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='parallax-story'] .ps__pin {
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  padding-block: 5rem;
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+  overflow: hidden;
+}
+
+[data-tpl='parallax-story'] .ps__pin-head {
+  padding-inline: clamp(1rem, 6vw, 5rem);
+  display: grid;
+  gap: 0.5rem;
+}
+
+[data-tpl='parallax-story'] .ps__pin-head h2 {
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  letter-spacing: -0.03em;
+}
+
+[data-tpl='parallax-story'] .ps__track-wrap {
+  overflow: hidden;
+}
+
+[data-tpl='parallax-story'] .ps__track-wrap--scroll {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-tpl='parallax-story'] .ps__track {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding-inline: clamp(1rem, 6vw, 5rem);
+  will-change: transform;
+}
+
+[data-tpl='parallax-story'] .ps__track li {
+  flex: 0 0 min(78vw, 21rem);
+  scroll-snap-align: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: grid;
+  gap: 0.625rem;
+  align-content: start;
+  min-height: 15rem;
+}
+
+[data-tpl='parallax-story'] .ps__num {
+  font-family: 'Newsreader', serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+[data-tpl='parallax-story'] .ps__track h3,
+[data-tpl='parallax-story'] .ps__sectors h3,
+[data-tpl='parallax-story'] .ps__registry h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+[data-tpl='parallax-story'] .ps__track p,
+[data-tpl='parallax-story'] .ps__sectors p,
+[data-tpl='parallax-story'] .ps__registry p,
+[data-tpl='parallax-story'] .ps__body {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+[data-tpl='parallax-story'] .ps__chapter {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(3rem, 10vw, 7rem) clamp(1rem, 6vw, 5rem);
+  overflow: hidden;
+}
+
+[data-tpl='parallax-story'] .ps__chapter h2 {
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin-block-end: 0.5rem;
+}
+
+[data-tpl='parallax-story'] .ps__body {
+  max-width: 60ch;
+  font-size: 1.0625rem;
+}
+
+[data-tpl='parallax-story'] .ps__pull {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  max-width: 20ch;
+  margin-block-start: 1rem;
+  padding-inline-start: 1.25rem;
+  border-inline-start: 3px solid var(--accent);
+}
+
+[data-tpl='parallax-story'] .ps__sectors,
+[data-tpl='parallax-story'] .ps__registry {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='parallax-story'] .ps__sectors li,
+[data-tpl='parallax-story'] .ps__registry li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.375rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  transition: transform 240ms var(--ease-out), border-color 240ms var(--ease-out);
+}
+
+[data-tpl='parallax-story'] .ps__sectors li:hover,
+[data-tpl='parallax-story'] .ps__registry li:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+[data-tpl='parallax-story'] .ps__contact {
+  display: grid;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-tpl='parallax-story'] .ps__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+[data-tpl='parallax-story'] .ps__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='parallax-story'] .ps__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+[data-tpl='parallax-story'] .ps__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+[data-tpl='parallax-story'] .ps__social span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.125rem 0.5rem;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='parallax-story'] .ps__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem clamp(1rem, 6vw, 5rem) 6rem;
+  border-block-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 860px) {
+  [data-tpl='parallax-story'] .ps__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

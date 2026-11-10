@@ -1,0 +1,499 @@
+/* Direction 21 — Monogram Field. Layered graphic plates behind a V letterform. */
+
+[data-tpl='monogram-field'] {
+  --bg: #0a0618;
+  --surface: rgb(26 16 54 / 0.6);
+  --fg: #f3eeff;
+  --muted: #a99ccf;
+  --line: rgb(160 130 255 / 0.2);
+  --accent: #a78bfa;
+  --mf-g1: #7c3aed;
+  --mf-g2: #d946ef;
+  --mf-g3: #22d3ee;
+
+  position: relative;
+  isolation: isolate;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Manrope', system-ui, sans-serif;
+  min-height: 100dvh;
+  overflow: clip;
+}
+
+[data-theme='light'] [data-tpl='monogram-field'] {
+  --bg: #f6f3ff;
+  --surface: rgb(255 255 255 / 0.72);
+  --fg: #1a1035;
+  --muted: #5d5182;
+  --line: rgb(110 70 200 / 0.18);
+  --accent: #6d28d9;
+  --mf-g1: #6d28d9;
+  --mf-g2: #c026d3;
+  --mf-g3: #0891b2;
+}
+
+[data-tpl='monogram-field'] h1,
+[data-tpl='monogram-field'] h2,
+[data-tpl='monogram-field'] h3,
+[data-tpl='monogram-field'] .mf__mark {
+  font-family: 'Syne', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+/* ---- Graphic plates ---- */
+
+[data-tpl='monogram-field'] .mf__wash {
+  position: fixed;
+  inset: -20%;
+  z-index: -3;
+  background:
+    radial-gradient(38% 34% at 22% 18%, var(--mf-g1) 0%, transparent 62%),
+    radial-gradient(34% 32% at 82% 30%, var(--mf-g2) 0%, transparent 60%),
+    radial-gradient(40% 38% at 55% 88%, var(--mf-g3) 0%, transparent 62%);
+  filter: blur(80px) saturate(150%);
+  opacity: 0.55;
+  animation: mf-wash 26s ease-in-out infinite alternate;
+}
+
+@keyframes mf-wash {
+  to {
+    transform: translate3d(-4%, 3%, 0) scale(1.12);
+  }
+}
+
+/* Chevron lattice — a tiled V field, echoing the monogram at small scale. */
+[data-tpl='monogram-field'] .mf__lattice {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(135deg, var(--line) 1px, transparent 1px),
+    linear-gradient(225deg, var(--line) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 34%, #000 30%, transparent 100%);
+  animation: mf-lattice 18s linear infinite;
+}
+
+@keyframes mf-lattice {
+  to {
+    background-position: 46px 46px;
+  }
+}
+
+[data-tpl='monogram-field'] .mf__grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgb(255 255 255 / 0.5) 0deg 1deg,
+    transparent 1deg 2deg
+  );
+  background-size: 4px 4px;
+}
+
+/* ---- Chrome ---- */
+
+[data-tpl='monogram-field'] .mf__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem clamp(1rem, 4vw, 2.5rem);
+  background: color-mix(in srgb, var(--bg) 66%, transparent);
+  backdrop-filter: blur(16px);
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='monogram-field'] .mf__mark {
+  font-size: 0.9375rem;
+  letter-spacing: 0.2em;
+}
+
+[data-tpl='monogram-field'] .mf__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='monogram-field'] .mf__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.875rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 240ms var(--ease-out), color 240ms var(--ease-out);
+}
+
+[data-tpl='monogram-field'] .mf__nav a:hover {
+  background: var(--surface);
+  color: var(--fg);
+}
+
+/* ---- Hero ---- */
+
+[data-tpl='monogram-field'] .mf__hero {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+  min-height: 88dvh;
+  padding: clamp(2.5rem, 8vw, 6rem) clamp(1rem, 5vw, 3rem);
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+[data-tpl='monogram-field'] .mf__monogram {
+  position: absolute;
+  inset-block: 2% 6%;
+  inset-inline-end: -6%;
+  width: min(78vw, 40rem);
+  z-index: 0;
+  opacity: 0.9;
+  will-change: transform;
+  filter: drop-shadow(0 0 60px color-mix(in srgb, var(--mf-g2) 40%, transparent));
+}
+
+[data-tpl='monogram-field'] .mf__glyph {
+  width: 100%;
+  height: 100%;
+}
+
+[data-tpl='monogram-field'] .mf__hero-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.125rem;
+  max-width: 40rem;
+}
+
+[data-tpl='monogram-field'] .mf__eyebrow {
+  justify-self: start;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+[data-tpl='monogram-field'] .mf__hero-body h1 {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+[data-tpl='monogram-field'] .mf__lede {
+  color: var(--muted);
+  max-width: 46ch;
+  line-height: 1.8;
+}
+
+[data-tpl='monogram-field'] .mf__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+[data-tpl='monogram-field'] .mf__cta,
+[data-tpl='monogram-field'] .mf__ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding-inline: 1.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+}
+
+[data-tpl='monogram-field'] .mf__cta {
+  background: linear-gradient(110deg, var(--mf-g1), var(--mf-g2), var(--mf-g3));
+  background-size: 200% 200%;
+  color: #fff;
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--mf-g2) 34%, transparent);
+}
+
+[data-tpl='monogram-field'] .mf__ghost {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  color: inherit;
+}
+
+[data-tpl='monogram-field'] .mf__cta:hover,
+[data-tpl='monogram-field'] .mf__ghost:hover {
+  transform: translateY(-3px);
+}
+
+[data-tpl='monogram-field'] .mf__whisper {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---- Sections ---- */
+
+[data-tpl='monogram-field'] .mf__section {
+  position: relative;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 5vw, 3rem);
+}
+
+[data-tpl='monogram-field'] .mf__band {
+  position: absolute;
+  inset-inline: -10%;
+  inset-block-start: 10%;
+  height: 60%;
+  z-index: -1;
+  background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--mf-g1) 26%, transparent), transparent);
+  filter: blur(50px);
+  will-change: transform;
+}
+
+[data-tpl='monogram-field'] .mf__band--alt {
+  background: linear-gradient(260deg, transparent, color-mix(in srgb, var(--mf-g3) 26%, transparent), transparent);
+}
+
+[data-tpl='monogram-field'] .mf__section h2 {
+  font-size: clamp(1.75rem, 4.5vw, 3rem);
+  letter-spacing: -0.035em;
+  margin-block-end: 1.75rem;
+}
+
+[data-tpl='monogram-field'] .mf__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='monogram-field'] .mf__cards--tight {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+[data-tpl='monogram-field'] .mf__cards li {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 1.625rem 1.5rem 1.5rem;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: transform 300ms var(--ease-out), border-color 300ms var(--ease-out),
+    box-shadow 300ms var(--ease-out);
+}
+
+/* Small chevron echo of the monogram, drawn per card. */
+[data-tpl='monogram-field'] .mf__chev {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 74px;
+  height: 74px;
+  background: linear-gradient(135deg, var(--mf-g2), var(--mf-g3));
+  clip-path: polygon(0 0, 26% 0, 50% 52%, 74% 0, 100% 0, 50% 100%);
+  opacity: 0.28;
+  transition: transform 380ms var(--ease-out), opacity 380ms var(--ease-out);
+}
+
+[data-tpl='monogram-field'] .mf__cards li:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  box-shadow: 0 20px 44px rgb(20 6 50 / 0.34);
+}
+
+[data-tpl='monogram-field'] .mf__cards li:hover .mf__chev {
+  transform: translateY(6px) scale(1.14);
+  opacity: 0.5;
+}
+
+[data-tpl='monogram-field'] .mf__num {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+[data-tpl='monogram-field'] .mf__cards h3 {
+  font-size: 1.1875rem;
+  letter-spacing: -0.02em;
+}
+
+[data-tpl='monogram-field'] .mf__cards p,
+[data-tpl='monogram-field'] .mf__about p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+[data-tpl='monogram-field'] .mf__feature {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 1.5rem;
+  padding: clamp(3rem, 10vw, 7rem) clamp(1rem, 5vw, 3rem);
+  text-align: center;
+}
+
+[data-tpl='monogram-field'] .mf__feature-glyph {
+  width: min(46vw, 15rem);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 40px color-mix(in srgb, var(--mf-g3) 46%, transparent));
+}
+
+[data-tpl='monogram-field'] .mf__feature p {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 5.5vw, 3.75rem);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  background: linear-gradient(100deg, var(--mf-g1), var(--mf-g2), var(--mf-g3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-tpl='monogram-field'] .mf__about,
+[data-tpl='monogram-field'] .mf__contact {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+}
+
+[data-tpl='monogram-field'] .mf__about {
+  max-width: 68ch;
+}
+
+[data-tpl='monogram-field'] .mf__contact {
+  gap: 1.5rem;
+}
+
+[data-tpl='monogram-field'] .mf__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+[data-tpl='monogram-field'] .mf__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='monogram-field'] .mf__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+[data-tpl='monogram-field'] .mf__contact-links a:hover {
+  text-decoration: underline;
+}
+
+[data-tpl='monogram-field'] .mf__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+[data-tpl='monogram-field'] .mf__social span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.125rem 0.5rem;
+  margin-inline-start: 0.375rem;
+}
+
+/* ---- Watermark footer ---- */
+
+[data-tpl='monogram-field'] .mf__footer {
+  position: relative;
+  margin-block-start: clamp(2rem, 6vw, 4rem);
+  padding-block-end: 7rem;
+  overflow: clip;
+}
+
+[data-tpl='monogram-field'] .mf__watermark {
+  display: grid;
+  place-items: center;
+  margin-block-end: -12%;
+  pointer-events: none;
+}
+
+[data-tpl='monogram-field'] .mf__watermark-glyph {
+  width: min(150vw, 88rem);
+  opacity: 0.22;
+  filter: blur(0.4px) drop-shadow(0 0 90px color-mix(in srgb, var(--mf-g2) 40%, transparent));
+}
+
+[data-tpl='monogram-field'] .mf__footer-row {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 5vw, 3rem);
+  border-block-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 900px) {
+  [data-tpl='monogram-field'] .mf__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tpl='monogram-field'] .mf__wash,
+  [data-tpl='monogram-field'] .mf__lattice {
+    animation: none;
+  }
+}

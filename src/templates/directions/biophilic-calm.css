@@ -1,0 +1,353 @@
+/* Direction 18 — Organic Systems. Varied radii, no hard corners anywhere. */
+
+[data-tpl='biophilic-calm'] {
+  --bg: #f6f3ea;
+  --tint: #eae5d6;
+  --surface: #fffdf8;
+  --fg: #1f3d2b;
+  --muted: #5b6b5c;
+  --line: #d9d3c2;
+  --accent: #4d9a6a;
+  --accent-deep: #1f5137;
+  --clay: #b4744a;
+
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  min-height: 100dvh;
+  overflow: clip;
+  padding-block-end: 6rem;
+}
+
+[data-theme='dark'] [data-tpl='biophilic-calm'] {
+  --bg: #10160f;
+  --tint: #171f16;
+  --surface: #1a221a;
+  --fg: #e8f0e4;
+  --muted: #9db29c;
+  --line: #2a352a;
+  --accent: #7bc494;
+  --accent-deep: #b8e0c4;
+  --clay: #d59a72;
+}
+
+[data-tpl='biophilic-calm'] h1,
+[data-tpl='biophilic-calm'] h2,
+[data-tpl='biophilic-calm'] h3,
+[data-tpl='biophilic-calm'] .bp__mark {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+[data-tpl='biophilic-calm'] .bp__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.75rem clamp(0.75rem, 3vw, 2rem);
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+}
+
+[data-tpl='biophilic-calm'] .bp__mark {
+  font-size: 0.9375rem;
+  letter-spacing: 0.14em;
+}
+
+[data-tpl='biophilic-calm'] .bp__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='biophilic-calm'] .bp__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.875rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 260ms var(--ease-out), color 260ms var(--ease-out);
+}
+
+[data-tpl='biophilic-calm'] .bp__nav a:hover {
+  background: var(--tint);
+  color: var(--accent-deep);
+}
+
+[data-tpl='biophilic-calm'] .bp__hero {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 5vw, 3rem);
+  max-width: 78rem;
+  margin-inline: auto;
+}
+
+[data-tpl='biophilic-calm'] .bp__hero-body {
+  display: grid;
+  gap: 1.125rem;
+}
+
+[data-tpl='biophilic-calm'] .bp__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+[data-tpl='biophilic-calm'] .bp__hero-body h1 {
+  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+[data-tpl='biophilic-calm'] .bp__lede {
+  color: var(--muted);
+  max-width: 46ch;
+  line-height: 1.8;
+}
+
+[data-tpl='biophilic-calm'] .bp__cta {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding-inline: 1.75rem;
+  border-radius: 999px;
+  background: var(--accent-deep);
+  color: var(--bg);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 280ms var(--ease-out), box-shadow 280ms var(--ease-out);
+}
+
+[data-tpl='biophilic-calm'] .bp__cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--accent-deep) 30%, transparent);
+}
+
+[data-tpl='biophilic-calm'] .bp__hero-shape {
+  position: relative;
+  aspect-ratio: 1;
+  max-height: 26rem;
+}
+
+[data-tpl='biophilic-calm'] .bp__shape {
+  position: absolute;
+  display: block;
+}
+
+[data-tpl='biophilic-calm'] .bp__shape--a {
+  inset: 4% 10% 22% 6%;
+  background: var(--accent);
+  border-radius: 62% 38% 46% 54% / 54% 46% 54% 46%;
+  opacity: 0.9;
+}
+
+[data-tpl='biophilic-calm'] .bp__shape--b {
+  inset: 30% 4% 8% 34%;
+  background: var(--clay);
+  border-radius: 44% 56% 68% 32% / 38% 62% 38% 62%;
+  opacity: 0.85;
+}
+
+[data-tpl='biophilic-calm'] .bp__shape--c {
+  inset: 40% 44% 40% 22%;
+  background: var(--tint);
+  border-radius: 50%;
+}
+
+[data-tpl='biophilic-calm'] .bp__divider {
+  color: var(--tint);
+  line-height: 0;
+}
+
+[data-tpl='biophilic-calm'] .bp__divider svg {
+  width: 100%;
+  height: clamp(40px, 6vw, 90px);
+}
+
+[data-tpl='biophilic-calm'] .bp__section {
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 3rem);
+}
+
+[data-tpl='biophilic-calm'] .bp__section--tint {
+  background: var(--tint);
+}
+
+[data-tpl='biophilic-calm'] .bp__section > h2 {
+  max-width: 78rem;
+  margin-inline: auto;
+  font-size: clamp(1.625rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
+  margin-block-end: 1.75rem;
+}
+
+[data-tpl='biophilic-calm'] .bp__cards,
+[data-tpl='biophilic-calm'] .bp__pods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin-inline: auto;
+  margin-block: 0;
+  padding: 0;
+  max-width: 78rem;
+}
+
+[data-tpl='biophilic-calm'] .bp__pods {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+[data-tpl='biophilic-calm'] .bp__cards li,
+[data-tpl='biophilic-calm'] .bp__pods li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 28px 20px 28px 20px;
+  padding: 1.625rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  transition: transform 320ms var(--ease-out), border-radius 320ms var(--ease-out),
+    box-shadow 320ms var(--ease-out);
+}
+
+[data-tpl='biophilic-calm'] .bp__cards li:hover,
+[data-tpl='biophilic-calm'] .bp__pods li:hover {
+  transform: translateY(-5px);
+  border-radius: 20px 34px 20px 34px;
+  box-shadow: 0 16px 32px color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+[data-tpl='biophilic-calm'] .bp__num {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--tint);
+  color: var(--accent-deep);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+[data-tpl='biophilic-calm'] .bp__cards h3,
+[data-tpl='biophilic-calm'] .bp__pods h3 {
+  font-size: 1.1875rem;
+  letter-spacing: -0.02em;
+}
+
+[data-tpl='biophilic-calm'] .bp__cards p,
+[data-tpl='biophilic-calm'] .bp__pods p,
+[data-tpl='biophilic-calm'] .bp__about p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+[data-tpl='biophilic-calm'] .bp__about {
+  max-width: 68ch;
+  margin-inline: auto;
+  display: grid;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 34px 24px 34px 24px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-tpl='biophilic-calm'] .bp__contact {
+  max-width: 78rem;
+  margin-inline: auto;
+  display: grid;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-tpl='biophilic-calm'] .bp__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+[data-tpl='biophilic-calm'] .bp__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='biophilic-calm'] .bp__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  color: var(--accent-deep);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+[data-tpl='biophilic-calm'] .bp__contact-links a:hover {
+  text-decoration: underline;
+}
+
+[data-tpl='biophilic-calm'] .bp__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+[data-tpl='biophilic-calm'] .bp__social span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--tint);
+  border-radius: 999px;
+  padding: 0.125rem 0.625rem;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='biophilic-calm'] .bp__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding: 2rem clamp(1rem, 5vw, 3rem);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 880px) {
+  [data-tpl='biophilic-calm'] .bp__hero {
+    grid-template-columns: 1.15fr 1fr;
+  }
+
+  [data-tpl='biophilic-calm'] .bp__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

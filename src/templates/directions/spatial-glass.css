@@ -1,0 +1,326 @@
+/* Direction 07 — Spatial Panels. --px/--py are set by usePointerParallax. */
+
+[data-tpl='spatial-glass'] {
+  --px: 0;
+  --py: 0;
+  --bg: #dfe6f2;
+  --glass: rgb(255 255 255 / 0.55);
+  --glass-edge: rgb(255 255 255 / 0.75);
+  --fg: #101c2e;
+  --muted: #4e6180;
+  --accent: #0ea5e9;
+
+  position: relative;
+  isolation: isolate;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100dvh;
+  overflow: clip;
+  padding-block-end: 6rem;
+}
+
+[data-theme='dark'] [data-tpl='spatial-glass'] {
+  --bg: #0a1020;
+  --glass: rgb(30 44 72 / 0.5);
+  --glass-edge: rgb(150 180 240 / 0.22);
+  --fg: #e9f0fc;
+  --muted: #9db0d0;
+  --accent: #56c9ff;
+}
+
+[data-tpl='spatial-glass'] .sp__backdrop {
+  position: fixed;
+  inset: -10%;
+  z-index: -1;
+  background:
+    radial-gradient(50% 45% at 20% 25%, color-mix(in srgb, var(--accent) 40%, transparent), transparent 70%),
+    radial-gradient(45% 40% at 82% 70%, color-mix(in srgb, #a78bfa 42%, transparent), transparent 70%),
+    var(--bg);
+  filter: blur(30px);
+}
+
+[data-tpl='spatial-glass'] .sp__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.75rem clamp(0.75rem, 3vw, 2rem);
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.12);
+}
+
+[data-tpl='spatial-glass'] .sp__mark {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  font-size: 0.875rem;
+}
+
+[data-tpl='spatial-glass'] .sp__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='spatial-glass'] .sp__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.875rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 240ms var(--ease-out), color 240ms var(--ease-out);
+}
+
+[data-tpl='spatial-glass'] .sp__nav a:hover {
+  background: var(--glass-edge);
+  color: var(--fg);
+}
+
+[data-tpl='spatial-glass'] .sp__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 78dvh;
+  padding: clamp(2rem, 7vw, 5rem) clamp(1rem, 4vw, 2.5rem);
+  perspective: 1200px;
+}
+
+[data-tpl='spatial-glass'] .sp__layer {
+  position: absolute;
+  border-radius: 40px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  transition: transform 420ms var(--ease-out);
+}
+
+[data-tpl='spatial-glass'] .sp__layer--back {
+  width: min(78%, 780px);
+  height: min(58%, 420px);
+  transform: translate3d(calc(var(--px) * -22px), calc(var(--py) * -18px), 0) rotate(-3deg);
+}
+
+[data-tpl='spatial-glass'] .sp__layer--mid {
+  width: min(68%, 660px);
+  height: min(52%, 380px);
+  transform: translate3d(calc(var(--px) * -38px), calc(var(--py) * -28px), 0) rotate(2deg);
+}
+
+[data-tpl='spatial-glass'] .sp__glass {
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.16);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  transition: transform 420ms var(--ease-out), box-shadow 320ms var(--ease-out);
+}
+
+[data-tpl='spatial-glass'] .sp__glass--hero {
+  z-index: 2;
+  max-width: 44rem;
+  text-align: center;
+  justify-items: center;
+  transform: translate3d(calc(var(--px) * -58px), calc(var(--py) * -40px), 0);
+}
+
+[data-tpl='spatial-glass'] .sp__glass--chip {
+  position: absolute;
+  z-index: 3;
+  inset-block-end: clamp(1rem, 6vw, 4rem);
+  inset-inline-end: clamp(1rem, 6vw, 5rem);
+  padding: 0.875rem 1.375rem;
+  border-radius: 999px;
+  transform: translate3d(calc(var(--px) * -80px), calc(var(--py) * -56px), 0);
+}
+
+[data-tpl='spatial-glass'] .sp__glass--chip span {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+[data-tpl='spatial-glass'] .sp__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+[data-tpl='spatial-glass'] .sp__stage h1 {
+  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+[data-tpl='spatial-glass'] .sp__lede {
+  color: var(--muted);
+  max-width: 48ch;
+}
+
+[data-tpl='spatial-glass'] .sp__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding-inline: 1.75rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #04121e;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+}
+
+[data-tpl='spatial-glass'] .sp__cta:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+[data-tpl='spatial-glass'] .sp__section {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem);
+}
+
+[data-tpl='spatial-glass'] .sp__section h2 {
+  font-size: clamp(1.5rem, 3.6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-block-end: 1.5rem;
+}
+
+[data-tpl='spatial-glass'] .sp__panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='spatial-glass'] .sp__panels--tight {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+[data-tpl='spatial-glass'] .sp__panels .sp__glass {
+  padding: 1.5rem;
+}
+
+[data-tpl='spatial-glass'] .sp__panels .sp__glass:hover {
+  transform: scale(1.02);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 0.2);
+}
+
+[data-tpl='spatial-glass'] .sp__num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+[data-tpl='spatial-glass'] .sp__glass h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+[data-tpl='spatial-glass'] .sp__glass p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+[data-tpl='spatial-glass'] .sp__glass--wide {
+  max-width: none;
+}
+
+[data-tpl='spatial-glass'] .sp__contact {
+  gap: 1.5rem;
+}
+
+[data-tpl='spatial-glass'] .sp__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+[data-tpl='spatial-glass'] .sp__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='spatial-glass'] .sp__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+[data-tpl='spatial-glass'] .sp__contact-links a:hover {
+  text-decoration: underline;
+}
+
+[data-tpl='spatial-glass'] .sp__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+[data-tpl='spatial-glass'] .sp__social span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  padding: 0.125rem 0.5rem;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='spatial-glass'] .sp__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding: 2rem clamp(1rem, 4vw, 2.5rem);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 860px) {
+  [data-tpl='spatial-glass'] .sp__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

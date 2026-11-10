@@ -1,0 +1,26 @@
+# Engineering Decisions
+
+| Date | Decision | Reason |
+| --- | --- | --- |
+| 2026-08-10 | Start with a frontend-only React website. | The first release is informational; no approved backend use case exists yet. |
+| 2026-08-10 | Defer theme uploads and colour extraction. | Feature has been cancelled for the initial scope. |
+| 2026-08-10 | Keep certificate details non-public. | Certificate information is private until explicitly approved for publication. |
+| 2026-08-10 | Use United Carriers as inspiration only. | The desired quality is immersive service storytelling; copying is not permitted. |
+| 2026-08-12 | Build twenty homepage directions instead of twelve. | Requested during the prototype phase to widen the comparison before committing to a direction. |
+| 2026-08-12 | Keep `framer-motion` alongside GSAP for the prototype. | GSAP remains the approved scroll/pin engine per `architecture.md`; framer-motion was installed before that was settled. Only one library ships in production once a direction is selected. |
+| 2026-08-12 | Treat `design-system/vincere-corp/MASTER.md` as a palette and type source, not a literal spec. | MASTER.md defines light-mode-only hex values, but the product requirements mandate a persisted light *and* dark experience. Its palette is re-expressed as CSS custom properties with a dark scale added. |
+| 2026-08-12 | Load prototype fonts from Google Fonts rather than locally. | Twenty directions need ~25 families; self-hosting them all is wasteful for a throwaway gallery. `architecture.md` requires local assets, so the production build self-hosts only the selected direction's fonts. |
+| 2026-08-12 | Scope each direction's tokens under a `[data-tpl]` attribute. | Twenty visual systems coexist in one app; attribute scoping prevents any direction's palette leaking into another or into the gallery chrome. |
+| 2026-08-12 | Present no numeric claim that is not a count of approved content. | The dashboard direction needs figures, but no project, client, metric or result has been approved. It counts service areas, sectors and record categories only. |
+| 2026-08-13 | Adapt studio-portfolio references to a capability index. | Directions 22 and 23 reference studio sites whose central pattern is a list of delivered projects. No project or client has been approved, so the pattern lists capability areas instead. The interaction is borrowed; the content is not invented. |
+| 2026-08-13 | Draw the V monogram as a typographic device, never as a supplied logo. | `product-requirements.md` mandates a text wordmark until a logo is approved. Directions 21 and 23 render a V letterform as decoration while `VINCERE CORP` remains the wordmark. Revisit if an official logo arrives. |
+| 2026-08-13 | Restrict the pastel direction's pastels to surfaces and accents. | Pastel palettes drift below WCAG AA when used for text. Direction 23 keeps a deep muted ink on near-neutral grounds; every pair was measured at 4.65:1 or better in both themes. |
+| 2026-08-13 | Add a descriptive `category` to each service. | Direction 23's card layout needs metadata where the reference shows a client and year. The category classifies the already-approved service list rather than adding a claim. |
+| 2026-08-21 | Deploy to GitHub Pages via Actions from source. | The repository holds the real project and rebuilds on every change, rather than shipping committed build output. |
+| 2026-08-21 | Route with `HashRouter` instead of `BrowserRouter`. | GitHub Pages has no SPA rewrite, so real paths 404 on direct visit or refresh. Hash routing needs no server configuration and no `404.html` fallback. Revisit if the site moves to a host that can rewrite. |
+| 2026-08-21 | Set Vite `base` to `'./'` rather than the repository name. | Relative asset paths work at any Pages sub-path, so the build does not need to know the repository name and survives a rename. |
+| 2026-08-21 | Handle in-page anchors with one document-level delegate. | Hash routing would otherwise read every `#services` anchor as a route change. A single listener in `src/lib/anchor-scroll.ts` fixed all 27 directions without touching their markup. |
+| 2026-08-21 | Pin every dependency and commit the lockfile. | 15 packages were pinned to `latest` and the lockfile was stale, so `npm ci` could not run. CI now builds the versions that were actually tested. |
+| 2026-08-21 | Remove `framer-motion`. | Nothing imported it once every direction settled on GSAP, per `architecture.md`. |
+| 2026-11-10 | Promote Monolith · Facet to the Home route as its own feature; move the gallery to `/templates`. | Direction 26 was selected. Home lives in `src/features/home/` with its own scene and `[data-page='home']` styles, copied (not imported) from the prototype so the gallery can be deleted without touching Home. The gallery remains URL-only. A theme toggle sits in the Home header; its nav and content are unchanged pending the Stitch design. |
+| 2026-11-10 | Expand Home into a full corporate page with draft process and FAQ copy; replace the header location text with a mobile menu. | Added About facts, How we work, FAQ, contact CTA and a four-column footer. New copy lives in `src/features/home/content.ts`, uses only approved facts, and is marked as draft pending approval. The nav now centres on a `1fr auto 1fr` grid and collapses to a menu button below 900px. |

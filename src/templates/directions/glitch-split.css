@@ -1,0 +1,412 @@
+/* Direction 15 — Chromatic Split. Channel offsets are decorative and reduced-motion safe. */
+
+[data-tpl='glitch-split'] {
+  --bg: #08080c;
+  --surface: #0f0f16;
+  --fg: #f2f3f8;
+  --muted: #8b8fa3;
+  --line: #232433;
+  --r: #ff2d55;
+  --c: #00e0ff;
+
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  min-height: 100dvh;
+  overflow: clip;
+  padding-block-end: 6rem;
+}
+
+[data-theme='light'] [data-tpl='glitch-split'] {
+  --bg: #f2f3f7;
+  --surface: #ffffff;
+  --fg: #0b0b12;
+  --muted: #5a5f73;
+  --line: #d8dae4;
+  --r: #e0004a;
+  --c: #0090b0;
+}
+
+[data-tpl='glitch-split'] h1,
+[data-tpl='glitch-split'] h2,
+[data-tpl='glitch-split'] h3,
+[data-tpl='glitch-split'] .gs__mark {
+  font-family: 'Orbitron', system-ui, sans-serif;
+}
+
+[data-tpl='glitch-split'] .gs__noise {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 2px,
+    currentColor 2px 3px
+  );
+}
+
+[data-tpl='glitch-split'] .gs__header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1rem, 4vw, 2rem);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-block-end: 1px solid var(--line);
+}
+
+[data-tpl='glitch-split'] .gs__mark {
+  position: relative;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+}
+
+[data-tpl='glitch-split'] .gs__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-tpl='glitch-split'] .gs__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 160ms linear, text-shadow 160ms linear;
+}
+
+[data-tpl='glitch-split'] .gs__nav a:hover {
+  color: var(--fg);
+  text-shadow: -2px 0 var(--r), 2px 0 var(--c);
+}
+
+[data-tpl='glitch-split'] .gs__main {
+  position: relative;
+  z-index: 2;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+[data-tpl='glitch-split'] .gs__hero {
+  display: grid;
+  gap: 1.25rem;
+  padding-block: clamp(3rem, 9vw, 6rem);
+}
+
+[data-tpl='glitch-split'] .gs__tag {
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--c);
+}
+
+[data-tpl='glitch-split'] .gs__title {
+  font-size: clamp(2rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+[data-tpl='glitch-split'] .gs__glitch {
+  position: relative;
+  display: inline-block;
+}
+
+[data-tpl='glitch-split'] .gs__glitch::before,
+[data-tpl='glitch-split'] .gs__glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+[data-tpl='glitch-split'] .gs__glitch::before {
+  color: var(--r);
+  transform: translateX(-3px);
+  mix-blend-mode: screen;
+  animation: gs-shift-a 4.5s steps(2) infinite;
+}
+
+[data-tpl='glitch-split'] .gs__glitch::after {
+  color: var(--c);
+  transform: translateX(3px);
+  mix-blend-mode: screen;
+  animation: gs-shift-b 5.2s steps(2) infinite;
+}
+
+[data-theme='light'] [data-tpl='glitch-split'] .gs__glitch::before,
+[data-theme='light'] [data-tpl='glitch-split'] .gs__glitch::after {
+  mix-blend-mode: multiply;
+}
+
+@keyframes gs-shift-a {
+  0%,
+  92% {
+    transform: translateX(-3px);
+  }
+  94% {
+    transform: translate(-8px, 2px);
+  }
+  96% {
+    transform: translate(-1px, -2px);
+  }
+}
+
+@keyframes gs-shift-b {
+  0%,
+  90% {
+    transform: translateX(3px);
+  }
+  93% {
+    transform: translate(9px, -2px);
+  }
+  97% {
+    transform: translate(1px, 2px);
+  }
+}
+
+[data-tpl='glitch-split'] .gs__lede {
+  color: var(--muted);
+  max-width: 58ch;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+[data-tpl='glitch-split'] .gs__cta {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 50px;
+  padding-inline: 1.5rem;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: box-shadow 160ms linear, background 160ms linear;
+}
+
+[data-tpl='glitch-split'] .gs__cta:hover {
+  background: var(--surface);
+  box-shadow: -4px 0 0 var(--r), 4px 0 0 var(--c);
+}
+
+[data-tpl='glitch-split'] .gs__strip {
+  border-block: 1px solid var(--line);
+  padding-block: clamp(1.5rem, 5vw, 3rem);
+  margin-inline: calc(-1 * clamp(1rem, 4vw, 2rem));
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  overflow: hidden;
+}
+
+[data-tpl='glitch-split'] .gs__strip p {
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.25rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  text-shadow: -3px 0 var(--r), 3px 0 var(--c);
+}
+
+[data-tpl='glitch-split'] .gs__section {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+[data-tpl='glitch-split'] .gs__h2 {
+  font-size: clamp(1rem, 2.4vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--c);
+  margin-block-end: 1.75rem;
+}
+
+[data-tpl='glitch-split'] .gs__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+[data-tpl='glitch-split'] .gs__grid--5 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+[data-tpl='glitch-split'] .gs__grid article {
+  background: var(--bg);
+  padding: 1.375rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  transition: background 160ms linear;
+}
+
+[data-tpl='glitch-split'] .gs__grid article:hover {
+  background: var(--surface);
+}
+
+[data-tpl='glitch-split'] .gs__grid article:hover h3 {
+  text-shadow: -2px 0 var(--r), 2px 0 var(--c);
+}
+
+[data-tpl='glitch-split'] .gs__num {
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  color: var(--r);
+}
+
+[data-tpl='glitch-split'] .gs__grid h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  transition: text-shadow 160ms linear;
+}
+
+[data-tpl='glitch-split'] .gs__grid p,
+[data-tpl='glitch-split'] .gs__body {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.8;
+}
+
+[data-tpl='glitch-split'] .gs__body {
+  font-size: 0.9375rem;
+  max-width: 54ch;
+  margin-block-end: 1rem;
+}
+
+[data-tpl='glitch-split'] .gs__section--split {
+  display: grid;
+  gap: 2rem;
+}
+
+[data-tpl='glitch-split'] .gs__panel {
+  position: relative;
+  min-height: 240px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+[data-tpl='glitch-split'] .gs__panel-r,
+[data-tpl='glitch-split'] .gs__panel-c {
+  position: absolute;
+  inset: 18% 20%;
+  mix-blend-mode: screen;
+}
+
+[data-theme='light'] [data-tpl='glitch-split'] .gs__panel-r,
+[data-theme='light'] [data-tpl='glitch-split'] .gs__panel-c {
+  mix-blend-mode: multiply;
+}
+
+[data-tpl='glitch-split'] .gs__panel-r {
+  background: var(--r);
+  transform: translate(-10px, -8px);
+}
+
+[data-tpl='glitch-split'] .gs__panel-c {
+  background: var(--c);
+  transform: translate(10px, 8px);
+}
+
+[data-tpl='glitch-split'] .gs__contact {
+  display: grid;
+  gap: 1.5rem;
+  border: 1px solid var(--line);
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+[data-tpl='glitch-split'] .gs__contact address {
+  font-style: normal;
+  display: grid;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.9;
+}
+
+[data-tpl='glitch-split'] .gs__contact-links {
+  display: grid;
+  justify-items: start;
+}
+
+[data-tpl='glitch-split'] .gs__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--c);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  word-break: break-word;
+  transition: text-shadow 160ms linear;
+}
+
+[data-tpl='glitch-split'] .gs__contact-links a:hover {
+  text-shadow: -2px 0 var(--r);
+}
+
+[data-tpl='glitch-split'] .gs__social {
+  display: grid;
+  gap: 0.375rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+[data-tpl='glitch-split'] .gs__social span {
+  color: var(--r);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-inline-start: 0.375rem;
+}
+
+[data-tpl='glitch-split'] .gs__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  border-block-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 880px) {
+  [data-tpl='glitch-split'] .gs__section--split {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+  }
+
+  [data-tpl='glitch-split'] .gs__contact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

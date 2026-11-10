@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+
+/*
+ * Shell tokens — used by the gallery chrome only.
+ * Individual templates declare their own scoped palettes in their own stylesheet,
+ * so nothing here leaks into a template's visual identity.
+ *
+ * Base palette traced to design-system/vincere-corp/MASTER.md, extended with the
+ * dark scale that MASTER.md does not define (see docs/decisions.md).
+ */
+:root {
+  --shell-bg: #f6f8fc;
+  --shell-surface: #ffffff;
+  --shell-surface-2: #eef3fb;
+  --shell-fg: #10203f;
+  --shell-fg-muted: #4a5b78;
+  --shell-border: #d3e0f2;
+  --shell-primary: #1e40af;
+  --shell-on-primary: #ffffff;
+  --shell-accent: #16a34a;
+  --shell-ring: #1e40af;
+
+  --shell-radius: 14px;
+  --shell-space-sm: 0.5rem;
+  --shell-space-md: 1.5rem;
+  --shell-space-lg: 2rem;
+  --shell-space-xl: 3rem;
+  --shell-space-2xl: 4rem;
+
+  --shell-shadow-sm: 0 1px 2px rgb(16 32 63 / 0.06);
+  --shell-shadow-md: 0 4px 12px rgb(16 32 63 / 0.08);
+  --shell-shadow-lg: 0 18px 40px rgb(16 32 63 / 0.14);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+[data-theme='dark'] {
+  --shell-bg: #070b14;
+  --shell-surface: #0e1626;
+  --shell-surface-2: #16203a;
+  --shell-fg: #e8eefb;
+  --shell-fg-muted: #97a8c6;
+  --shell-border: #24314e;
+  --shell-primary: #7aa2ff;
+  --shell-on-primary: #06101f;
+  --shell-accent: #4ade80;
+  --shell-ring: #7aa2ff;
+
+  --shell-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+  --shell-shadow-md: 0 6px 18px rgb(0 0 0 / 0.55);
+  --shell-shadow-lg: 0 24px 50px rgb(0 0 0 / 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--shell-bg);
+  color: var(--shell-fg);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+:where(a, button, input, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--shell-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 1000;
+  padding: 0.75rem 1.25rem;
+  background: var(--shell-primary);
+  color: var(--shell-on-primary);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 180ms var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
